@@ -192,14 +192,14 @@
   }
 
   .pill-label {
-    font-size: 11px;
-    color: var(--muted);
+    font-size: 13px;
+    color: #aaa;
     font-weight: 500;
     line-height: 1.3;
   }
 
   .pill-delta {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     margin-top: 4px;
   }
@@ -225,8 +225,8 @@
   }
 
   .comp-metric-name {
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
     color: var(--text);
   }
 
@@ -246,10 +246,10 @@
   }
 
   .comp-bar-month {
-    font-size: 10px;
-    color: var(--muted);
+    font-size: 12px;
+    color: #aaa;
     width: 24px;
-    font-weight: 600;
+    font-weight: 700;
     flex-shrink: 0;
   }
 
@@ -390,16 +390,17 @@
   .insight-content { flex: 1; }
 
   .insight-title {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     line-height: 1.3;
+    color: var(--text);
   }
 
   .insight-text {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.6;
+    font-size: 13px;
+    color: #bbb;
+    line-height: 1.7;
     font-weight: 400;
   }
 
@@ -634,6 +635,72 @@
     <div class="chart-title">Contatos recebidos por mês</div>
     <div class="chart-canvas">
       <canvas id="chart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="section">
+  <div class="section-label">Instagram</div>
+
+  <!-- Seguidores hero -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:24px;margin-bottom:16px;text-align:center">
+    <div style="font-size:12px;color:var(--yellow);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:2px">Total de seguidores</div>
+    <div style="font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1;color:var(--text)">572</div>
+    <div style="margin-top:12px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+      <div style="background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:var(--green)">+23 novos ↑</div>
+      <div style="background:rgba(248,113,113,0.15);border:1px solid rgba(248,113,113,0.3);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:var(--red)">−9 saíram</div>
+      <div style="background:var(--yellow-dim);border:1px solid rgba(200,212,0,0.3);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:var(--yellow)">+2,5% vs jan</div>
+    </div>
+  </div>
+
+  <!-- Interações Jan vs Fev -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px">
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:16px">Interações no perfil</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div style="background:var(--bg);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(167,139,250,0.2)">
+        <div style="font-size:12px;color:#a78bfa;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Janeiro</div>
+        <div style="font-size:36px;font-weight:900;color:#a78bfa;letter-spacing:-1px">457</div>
+        <div style="font-size:12px;color:#ccc;margin-top:4px;font-weight:500">interações</div>
+      </div>
+      <div style="background:var(--bg);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(200,212,0,0.2)">
+        <div style="font-size:12px;color:var(--yellow);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Fevereiro</div>
+        <div style="font-size:36px;font-weight:900;color:var(--yellow);letter-spacing:-1px">193</div>
+        <div style="font-size:12px;color:#ccc;margin-top:4px;font-weight:500">interações</div>
+      </div>
+    </div>
+    <div style="background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.25);border-radius:12px;padding:14px">
+      <div style="font-size:14px;font-weight:700;color:#f87171;margin-bottom:6px">📉 Queda nas interações orgânicas</div>
+      <div style="font-size:13px;color:#ddd;line-height:1.7">Em janeiro, 65% das interações vieram de novos públicos — em fevereiro caiu para 40%. Vamos criar mais conteúdo orgânico para ampliar o alcance natural.</div>
+    </div>
+  </div>
+
+  <!-- Por tipo de conteúdo -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:20px">
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:20px">O que mais engajou em Fevereiro</div>
+
+    <div style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:15px;font-weight:700;color:var(--text)">🎬 Reels</div>
+        <div style="font-size:16px;font-weight:900;color:var(--yellow)">97,1%</div>
+      </div>
+      <div style="height:12px;background:var(--bg);border-radius:6px;overflow:hidden">
+        <div style="height:100%;width:97.1%;background:var(--yellow);border-radius:6px;box-shadow:0 0 10px rgba(200,212,0,0.4)"></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:15px;font-weight:700;color:var(--text)">📖 Stories</div>
+        <div style="font-size:16px;font-weight:900;color:#ccc">2,9%</div>
+      </div>
+      <div style="height:12px;background:var(--bg);border-radius:6px;overflow:hidden">
+        <div style="height:100%;width:2.9%;background:#555;border-radius:6px"></div>
+      </div>
+    </div>
+
+    <div style="background:rgba(200,212,0,0.08);border:1px solid rgba(200,212,0,0.25);border-radius:12px;padding:14px">
+      <div style="font-size:14px;color:#eee;line-height:1.7">🎬 Os <strong style="color:var(--yellow)">Reels são o formato campeão</strong> — responsáveis por quase toda a interação do perfil. É onde vamos continuar apostando forte em março.</div>
     </div>
   </div>
 </div>
