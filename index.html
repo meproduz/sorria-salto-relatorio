@@ -3,41 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sorria Salto — Relatório de Desempenho · Março 2026</title>
+<title>Sorria Salto — Relatório de Desempenho · Maio 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
-    --bg: #0e0e0e;
-    --surface: #161616;
-    --surface2: #1e1e1e;
-    --border: #2a2a2a;
-    --yellow: #c8d400;
-    --yellow-dim: rgba(200,212,0,0.10);
-    --text: #f0f0f0;
-    --muted: #777;
-    --green: #4ade80;
-    --green-dim: rgba(74,222,128,0.12);
-    --red: #f87171;
-    --red-dim: rgba(248,113,113,0.12);
-    --blue: #60a5fa;
-    --blue-dim: rgba(96,165,250,0.12);
+    --bg: #0e0e0e; --surface: #161616; --surface2: #1e1e1e; --border: #2a2a2a;
+    --yellow: #c8d400; --yellow-dim: rgba(200,212,0,0.10); --text: #f0f0f0; --muted: #777;
+    --green: #4ade80; --green-dim: rgba(74,222,128,0.12);
+    --red: #f87171; --red-dim: rgba(248,113,113,0.12);
   }
-
   * { margin:0; padding:0; box-sizing:border-box; }
-
   html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; max-width: 480px; margin: 0 auto; padding-bottom: 40px; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Poppins', sans-serif;
-    max-width: 480px;
-    margin: 0 auto;
-    padding-bottom: 40px;
-  }
-
-  /* ── TABLET (768px+) ── */
   @media (min-width: 768px) {
     body { max-width: 720px; }
     .header { padding: 36px 40px 32px; }
@@ -48,529 +27,101 @@
     .pills-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
     .pill-val { font-size: 24px; }
     .comp-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .criativo-pills { flex-direction: row; }
     .chart-canvas { height: 240px !important; }
-    .insight { padding: 18px; }
+    .criativos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .footer { padding: 24px 36px; }
   }
-
-  /* ── DESKTOP (1024px+) ── */
   @media (min-width: 1024px) {
     body { max-width: 1020px; }
     .header { padding: 48px 56px 44px; }
-    .logo-title { font-size: 56px; }
     .section { padding: 36px 56px; }
-    .section-label { font-size: 11px; letter-spacing: 3px; margin-bottom: 20px; }
     .hero-metric { padding: 44px; }
     .hero-metric-val { font-size: 108px; }
-    .hero-metric-label { font-size: 18px; }
     .pills-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .pill { padding: 20px; }
-    .pill-emoji { font-size: 28px; }
     .pill-val { font-size: 30px; }
-    .pill-label { font-size: 13px; }
     .comp-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .criativos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .criativo-pills { flex-direction: row; gap: 10px; }
     .insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .insight { padding: 22px; }
-    .insight-icon { font-size: 28px; }
-    .insight-title { font-size: 17px; }
-    .insight-text { font-size: 14px; }
     .chart-canvas { height: 300px !important; }
-    .footer { padding: 32px 56px; font-size: 13px; }
+    .footer { padding: 32px 56px; }
   }
 
-  /* HEADER */
-  .header {
-    background: var(--surface);
-    padding: 28px 24px 24px;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .header::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(200,212,0,0.08) 0%, transparent 70%);
-  }
-
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .logo-mark {
-    width: 36px; height: 36px;
-    background: var(--yellow);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 13px; color: #0e0e0e;
-    letter-spacing: -0.5px;
-  }
-
-  .report-tag {
-    background: var(--yellow-dim);
-    border: 1px solid rgba(200,212,0,0.2);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 10px;
-    color: var(--yellow);
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .client-name {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 1.1;
-    margin-bottom: 4px;
-  }
-
+  .header { background: var(--surface); padding: 28px 24px 24px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(200,212,0,0.08) 0%, transparent 70%); }
+  .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .logo-mark { width: 36px; height: 36px; background: var(--yellow); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: #0e0e0e; }
+  .report-tag { background: var(--yellow-dim); border: 1px solid rgba(200,212,0,0.2); border-radius: 20px; padding: 4px 12px; font-size: 10px; color: var(--yellow); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+  .client-name { font-size: 32px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 4px; }
   .client-name span { color: var(--yellow); }
+  .period { font-size: 12px; color: var(--muted); font-weight: 400; }
 
-  .period {
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 400;
-  }
-
-  /* SECTION */
   .section { padding: 24px; border-bottom: 1px solid var(--border); }
+  .section-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-  .section-label {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* HERO METRIC */
-  .hero-metric {
-    background: var(--yellow);
-    border-radius: 20px;
-    padding: 28px 24px;
-    text-align: center;
-    margin-bottom: 16px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-metric::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 120px; height: 120px;
-    background: rgba(0,0,0,0.06);
-    border-radius: 50%;
-  }
-
+  .hero-metric { background: var(--yellow); border-radius: 20px; padding: 28px 24px; text-align: center; margin-bottom: 16px; position: relative; overflow: hidden; }
+  .hero-metric::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(0,0,0,0.06); border-radius: 50%; }
   .hero-metric-emoji { font-size: 32px; margin-bottom: 8px; }
-  .hero-metric-val {
-    font-size: 64px;
-    font-weight: 900;
-    color: #0e0e0e;
-    line-height: 1;
-    letter-spacing: -3px;
-    margin-bottom: 4px;
-  }
+  .hero-metric-val { font-size: 64px; font-weight: 900; color: #0e0e0e; line-height: 1; letter-spacing: -3px; margin-bottom: 4px; }
+  .hero-metric-label { font-size: 14px; font-weight: 600; color: rgba(0,0,0,0.6); }
+  .hero-metric-delta { display: inline-block; background: rgba(0,0,0,0.1); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; color: #0e0e0e; margin-top: 8px; }
 
-  .hero-metric-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(0,0,0,0.6);
-  }
-
-  .hero-metric-delta {
-    display: inline-block;
-    background: rgba(0,0,0,0.1);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #0e0e0e;
-    margin-top: 8px;
-  }
-
-  /* PILLS GRID */
-  .pills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .pill {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 16px;
-    text-align: center;
-    transition: border-color 0.2s;
-  }
-
-  .pill:hover { border-color: var(--yellow); }
-
+  .pills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pill { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 16px; text-align: center; }
   .pill-emoji { font-size: 22px; margin-bottom: 6px; }
+  .pill-val { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 2px; }
+  .pill-label { font-size: 13px; color: #aaa; font-weight: 500; line-height: 1.3; }
+  .pill-delta { font-size: 12px; font-weight: 700; margin-top: 4px; }
+  .up { color: var(--green); } .down { color: var(--red); } .neutral { color: var(--yellow); }
 
-  .pill-val {
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 2px;
-    color: var(--text);
-  }
-
-  .pill-label {
-    font-size: 13px;
-    color: #aaa;
-    font-weight: 500;
-    line-height: 1.3;
-  }
-
-  .pill-delta {
-    font-size: 12px;
-    font-weight: 700;
-    margin-top: 4px;
-  }
-
-  .up { color: var(--green); }
-  .down { color: var(--red); }
-  .neutral { color: var(--yellow); }
-
-  /* COMPARATIVO VISUAL */
-  .comp-visual {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .comp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-
-  .comp-metric-name {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  .comp-delta-badge {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 10px;
-    border-radius: 20px;
-  }
-
+  .comp-visual { display: flex; flex-direction: column; gap: 16px; }
+  .comp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .comp-metric-name { font-size: 14px; font-weight: 700; color: var(--text); }
+  .comp-delta-badge { font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 20px; }
   .comp-bars { display: flex; flex-direction: column; gap: 6px; }
+  .comp-bar-row { display: flex; align-items: center; gap: 10px; }
+  .comp-bar-month { font-size: 12px; color: #aaa; width: 28px; font-weight: 700; flex-shrink: 0; }
+  .comp-bar-track { flex: 1; height: 10px; background: var(--surface2); border-radius: 5px; overflow: hidden; }
+  .comp-bar-fill { height: 100%; border-radius: 5px; }
+  .bar-prev { background: var(--border); } .bar-cur { background: var(--yellow); box-shadow: 0 0 8px rgba(200,212,0,0.3); }
+  .comp-bar-num { font-size: 11px; font-weight: 700; width: 64px; text-align: right; flex-shrink: 0; }
 
-  .comp-bar-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .criativos-grid { display: flex; flex-direction: column; gap: 12px; }
+  .insights-grid { display: flex; flex-direction: column; gap: 12px; }
 
-  .comp-bar-month {
-    font-size: 12px;
-    color: #aaa;
-    width: 28px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .comp-bar-track {
-    flex: 1;
-    height: 10px;
-    background: var(--surface2);
-    border-radius: 5px;
-    overflow: hidden;
-  }
-
-  .comp-bar-fill {
-    height: 100%;
-    border-radius: 5px;
-    transition: width 1s ease;
-  }
-
-  .bar-prev { background: var(--border); }
-  .bar-mar { background: var(--yellow); box-shadow: 0 0 8px rgba(200,212,0,0.3); }
-
-  .comp-bar-num {
-    font-size: 11px;
-    font-weight: 700;
-    width: 64px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  /* CRIATIVOS */
-  .criativos-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .insights-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .criativo {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 18px;
-    position: relative;
-  }
-
-  .criativo.winner {
-    background: var(--yellow);
-    border-color: var(--yellow);
-  }
-
+  .criativo { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+  .criativo.winner { background: var(--yellow); border-color: var(--yellow); }
   .criativo.winner .criativo-name { color: #0e0e0e; }
   .criativo.winner .criativo-metric-label { color: rgba(0,0,0,0.55); }
   .criativo.winner .criativo-metric-val { color: #0e0e0e; }
-  .criativo.winner .criativo-rank {
-    color: #0e0e0e;
-    background: rgba(0,0,0,0.15);
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-  }
-
-  .criativo-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 14px;
-  }
-
-  .criativo-rank {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
+  .criativo.winner .criativo-rank { color: #0e0e0e; background: rgba(0,0,0,0.15); border-radius: 20px; padding: 3px 10px; font-size: 11px; }
+  .criativo-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .criativo-rank { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
   .winner-crown { font-size: 22px; }
-
-  .criativo-name {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 14px;
-  }
-
-  .criativo-pills {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
-  .criativo-metric {
-    text-align: center;
-    background: rgba(0,0,0,0.1);
-    border-radius: 10px;
-    padding: 8px 4px;
-  }
-
+  .criativo-name { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; }
+  .criativo-pills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .criativo-metric { text-align: center; background: rgba(0,0,0,0.1); border-radius: 10px; padding: 8px 4px; }
   .criativo.winner .criativo-metric { background: rgba(0,0,0,0.08); }
+  .criativo-metric-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; font-weight: 600; }
+  .criativo-metric-val { font-size: 14px; font-weight: 800; }
 
-  .criativo-metric-label {
-    font-size: 9px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-    font-weight: 600;
-  }
-
-  .criativo-metric-val {
-    font-size: 15px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-  }
-
-  /* GRÁFICO */
-  .chart-wrap {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
-  }
-
-  .chart-title {
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: var(--text);
-  }
-
+  .chart-wrap { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+  .chart-title { font-size: 13px; font-weight: 600; margin-bottom: 16px; color: var(--text); }
   .chart-canvas { height: 180px; position: relative; }
 
-  /* INSIGHT */
-  .insight {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 16px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-
+  .insight { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 16px; display: flex; gap: 14px; align-items: flex-start; }
   .insight-icon { font-size: 24px; flex-shrink: 0; }
-
   .insight-content { flex: 1; }
+  .insight-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .insight-text { font-size: 13px; color: #bbb; line-height: 1.6; }
 
-  .insight-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-
-  .insight-text {
-    font-size: 13px;
-    color: #bbb;
-    line-height: 1.6;
-  }
-
-  /* FOOTER */
-  .footer {
-    padding: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .footer-name {
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--yellow);
-  }
-
-  .footer-sub {
-    font-size: 10px;
-    color: var(--muted);
-  }
-
-  .footer-period {
-    font-size: 11px;
-    color: var(--muted);
-    text-align: right;
-    line-height: 1.5;
-  }
-
-  /* ALERTA SATURAÇÃO */
-  .alert-box {
-    border-radius: 14px;
-    padding: 14px 16px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    margin-top: 12px;
-  }
-
-  /* SEÇÃO COMPLEMENTAR */
-  .section-complementar {
-    border: 1px solid rgba(96,165,250,0.25);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 16px;
-    background: rgba(96,165,250,0.04);
-  }
-
-  .complementar-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--blue-dim);
-    border: 1px solid rgba(96,165,250,0.3);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--blue);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-
-  .trafego-item {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  }
-
-  .trafego-item:last-child { margin-bottom: 0; }
-
-  .trafego-name {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
-
-  .trafego-visits {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .trafego-cpv {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--blue);
-    text-align: right;
-  }
-
-  .trafego-cpv-label {
-    font-size: 10px;
-    color: var(--muted);
-    font-weight: 500;
-    text-align: right;
-  }
-
-  .trafego-item.leader {
-    border-color: rgba(96,165,250,0.4);
-    background: rgba(96,165,250,0.06);
-  }
+  .footer { padding: 24px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; }
+  .footer-name { font-size: 14px; font-weight: 800; color: var(--yellow); }
+  .footer-sub { font-size: 10px; color: var(--muted); }
+  .footer-period { font-size: 11px; color: var(--muted); text-align: right; line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -582,426 +133,298 @@
     <div class="report-tag">Relatório Mensal</div>
   </div>
   <div class="client-name">Sorria <span>Salto</span></div>
-  <div class="period">Março 2026 · 01/03 — 31/03</div>
+  <div class="period">Maio 2026 · 01/05 — 31/05</div>
 </div>
 
-<!-- HERO METRIC -->
+<!-- RESULTADO DO MÊS -->
 <div class="section">
   <div class="section-label">Resultado do mês</div>
   <div class="hero-metric">
     <div class="hero-metric-emoji">💬</div>
-    <div class="hero-metric-val">99</div>
+    <div class="hero-metric-val">103</div>
     <div class="hero-metric-label">Pessoas entraram em contato</div>
-    <div class="hero-metric-delta">↓ 17,5% vs fevereiro</div>
+    <div class="hero-metric-delta">↓ 46,6% vs abril</div>
   </div>
-
   <div class="pills-grid">
     <div class="pill">
       <div class="pill-emoji">👁️</div>
-      <div class="pill-val">18.512</div>
+      <div class="pill-val">9.862</div>
       <div class="pill-label">Pessoas viram seu conteúdo</div>
-      <div class="pill-delta up">↑ +18,6% vs fev</div>
+      <div class="pill-delta down">↓ −70,3% vs abr</div>
     </div>
     <div class="pill">
       <div class="pill-emoji">💰</div>
-      <div class="pill-val">R$ 9,63</div>
+      <div class="pill-val">R$ 8,76</div>
       <div class="pill-label">Custo por contato</div>
-      <div class="pill-delta down">↑ +52,9% vs fev</div>
+      <div class="pill-delta neutral">↑ +30,6% vs abr</div>
     </div>
     <div class="pill">
       <div class="pill-emoji">📱</div>
-      <div class="pill-val">48.828</div>
+      <div class="pill-val">64.938</div>
       <div class="pill-label">Vezes que apareceu</div>
-      <div class="pill-delta down">↓ −16,9% vs fev</div>
+      <div class="pill-delta down">↓ −57,4% vs abr</div>
     </div>
     <div class="pill">
-      <div class="pill-emoji">🖱️</div>
-      <div class="pill-val">259</div>
-      <div class="pill-label">Cliques no perfil</div>
-      <div class="pill-delta up">↑ +11,6% vs fev</div>
+      <div class="pill-emoji">💸</div>
+      <div class="pill-val">R$ 902</div>
+      <div class="pill-label">Total investido</div>
+      <div class="pill-delta neutral">↓ −38,9% vs abr</div>
     </div>
   </div>
 </div>
 
 <!-- CONTEXTO DO MÊS -->
 <div class="section">
-  <div class="section-label">O que aconteceu em março</div>
+  <div class="section-label">O que aconteceu em maio</div>
   <div style="background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:20px">
-    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:12px">📋 Estrutura das campanhas</div>
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:12px">📋 Contexto de transição</div>
     <div style="font-size:13px;color:#bbb;line-height:1.8">
-      O mês teve <strong style="color:var(--text)">duas frentes distintas:</strong><br><br>
-      <strong style="color:var(--yellow)">① Conversão (foco principal)</strong> — campanha de vendas com novos criativos focados em prótese protocolo, substituindo a campanha anterior. Objetivo: contatos via WhatsApp.<br><br>
-      <strong style="color:var(--blue)">② Aquecimento de perfil (ação complementar)</strong> — campanha de tráfego criada com saldo disponível na conta de anúncios. Objetivo: aumentar seguidores e visibilidade do perfil. <em>Não faz parte da estrutura padrão mensal.</em>
+      Maio foi um mês de <strong style="color:var(--text)">troca de criativos</strong>. A campanha de Protocolo do mês anterior foi encerrada e substituída pela nova campanha <strong style="color:var(--yellow)">"Mês da Prótese"</strong>, que ainda estava em fase de aprendizado.<br><br>
+      O volume menor de contatos e o CPR mais alto refletem esse período de adaptação — o algoritmo ainda está calibrando o novo criativo para o público certo.
     </div>
   </div>
 </div>
 
-<!-- CAMPANHA DE VENDAS — CRIATIVOS -->
+<!-- DESEMPENHO GERAL -->
 <div class="section">
-  <div class="section-label">Criativos · campanha de vendas</div>
-  <div class="criativos-grid">
-
-    <!-- WINNER -->
-    <div class="criativo winner">
-      <div class="criativo-top">
-        <div class="criativo-rank">💎 Melhor CPR do mês</div>
-        <div class="winner-crown">👑</div>
-      </div>
-      <div class="criativo-name">Parcelamento — Dra. Ana</div>
-      <div class="criativo-pills">
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Contatos</div>
-          <div class="criativo-metric-val">23</div>
-        </div>
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Por contato</div>
-          <div class="criativo-metric-val">R$ 5,04</div>
-        </div>
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Qualidade</div>
-          <div class="criativo-metric-val">⬆️ Alta</div>
-        </div>
-      </div>
-      <div style="margin-top:12px;background:rgba(0,0,0,0.12);border-radius:10px;padding:10px 12px;font-size:12px;color:rgba(0,0,0,0.7);line-height:1.5">
-        Classificação de qualidade <strong>"Acima da Média"</strong> pelo Meta — o único criativo com esse selo em março. Melhor custo e melhor qualidade juntos.
-      </div>
+  <div class="section-label">Desempenho geral</div>
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px">
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">Todas as métricas · Abr vs Mai</div>
+    <div style="display:flex;gap:16px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:6px"><div style="width:24px;height:3px;background:#a78bfa;border-radius:2px"></div><span style="font-size:12px;color:#a78bfa;font-weight:600">Abr</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><div style="width:24px;height:3px;background:var(--yellow);border-radius:2px"></div><span style="font-size:12px;color:var(--yellow);font-weight:600">Mai</span></div>
     </div>
-
-    <!-- 2º — mais contatos -->
-    <div class="criativo">
-      <div class="criativo-top">
-        <div class="criativo-rank">🏆 Mais contatos</div>
-      </div>
-      <div class="criativo-name">Perdeu todos os dentes?</div>
-      <div class="criativo-pills">
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Contatos</div>
-          <div class="criativo-metric-val">25</div>
-        </div>
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Por contato</div>
-          <div class="criativo-metric-val">R$ 11,34</div>
-        </div>
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Gasto</div>
-          <div class="criativo-metric-val">R$ 283</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3º -->
-    <div class="criativo">
-      <div class="criativo-top">
-        <div class="criativo-rank">3º lugar</div>
-      </div>
-      <div class="criativo-name">12 dentes com 4 implantes</div>
-      <div class="criativo-pills">
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Contatos</div>
-          <div class="criativo-metric-val">13</div>
-        </div>
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Por contato</div>
-          <div class="criativo-metric-val">R$ 12,21</div>
-        </div>
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Gasto</div>
-          <div class="criativo-metric-val">R$ 158</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AD-01 -->
-    <div class="criativo">
-      <div class="criativo-top">
-        <div class="criativo-rank">Encerrado em 5 dias</div>
-      </div>
-      <div class="criativo-name" style="font-size:17px">AD-01 (teste inicial)</div>
-      <div class="criativo-pills">
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Contatos</div>
-          <div class="criativo-metric-val">1</div>
-        </div>
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Por contato</div>
-          <div class="criativo-metric-val">R$ 17,32</div>
-        </div>
-        <div class="criativo-metric">
-          <div class="criativo-metric-label">Gasto</div>
-          <div class="criativo-metric-val">R$ 17</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Alerta frequência -->
-  <div class="alert-box" style="background:var(--red-dim);border:1px solid rgba(248,113,113,0.25);">
-    <div style="font-size:22px">⚠️</div>
-    <div>
-      <div style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:4px">Frequência 3,31 — sinal de saturação</div>
-      <div style="font-size:13px;color:#ccc;line-height:1.6">A campanha de vendas ativa atingiu frequência média de 3,31 — o público está vendo o mesmo anúncio muitas vezes. É hora de expandir o público ou renovar os criativos para evitar queda de performance em abril.</div>
-    </div>
-  </div>
-</div>
-
-<!-- AÇÃO COMPLEMENTAR: AQUECIMENTO DE PERFIL -->
-<div class="section">
-  <div class="section-label">Ação complementar · aquecimento de perfil</div>
-
-  <div class="section-complementar">
-    <div class="complementar-badge">
-      📣 Campanha de tráfego · exclusiva de março
-    </div>
-    <div style="font-size:13px;color:#aaa;line-height:1.6;margin-bottom:16px">
-      Com saldo disponível na conta de anúncios, criamos uma campanha separada com objetivo de <strong style="color:var(--blue)">visitas ao perfil do Instagram</strong> — sem interferir no orçamento de conversão. O objetivo aqui <em>não é contato</em>, mas alcance e aquecimento de audiência.
-    </div>
-
-    <div style="display:flex;justify-content:space-between;align-items:center;background:var(--surface2);border-radius:12px;padding:14px 16px;margin-bottom:12px">
-      <div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:2px">Total investido nessa frente</div>
-        <div style="font-size:22px;font-weight:800;color:var(--blue)">R$ 67,93</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:12px;color:var(--muted);margin-bottom:2px">Visitas ao perfil geradas</div>
-        <div style="font-size:22px;font-weight:800;color:var(--text)">150</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:12px;color:var(--muted);margin-bottom:2px">Custo por visita</div>
-        <div style="font-size:22px;font-weight:800;color:var(--blue)">R$ 0,45</div>
-      </div>
-    </div>
-
-    <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Desempenho por vídeo</div>
-
-    <div class="trafego-item leader">
-      <div>
-        <div class="trafego-name">🎬 Vlog Prótese</div>
-        <div class="trafego-visits">90 visitas ao perfil</div>
-      </div>
-      <div>
-        <div class="trafego-cpv">R$ 0,40</div>
-        <div class="trafego-cpv-label">por visita</div>
-      </div>
-    </div>
-
-    <div class="trafego-item">
-      <div>
-        <div class="trafego-name">😬 Diastema</div>
-        <div class="trafego-visits">36 visitas ao perfil</div>
-      </div>
-      <div>
-        <div class="trafego-cpv">R$ 0,51</div>
-        <div class="trafego-cpv-label">por visita</div>
-      </div>
-    </div>
-
-    <div class="trafego-item">
-      <div>
-        <div class="trafego-name">✅ Mitos e Verdades</div>
-        <div class="trafego-visits">12 visitas ao perfil</div>
-      </div>
-      <div>
-        <div class="trafego-cpv">R$ 0,53</div>
-        <div class="trafego-cpv-label">por visita</div>
-      </div>
-    </div>
-
-    <div class="trafego-item">
-      <div>
-        <div class="trafego-name">☕ Café no Clareamento</div>
-        <div class="trafego-visits">11 visitas ao perfil</div>
-      </div>
-      <div>
-        <div class="trafego-cpv">R$ 0,54</div>
-        <div class="trafego-cpv-label">por visita</div>
-      </div>
-    </div>
-
-    <div style="background:var(--blue-dim);border:1px solid rgba(96,165,250,0.2);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:13px;color:#ccc;line-height:1.6">
-      💡 O <strong style="color:var(--blue)">Vlog Prótese</strong> foi o vídeo mais eficiente — 90 visitas a R$ 0,40 cada. Esse conteúdo tem potencial como criativo de conversão também.
+    <div class="chart-canvas"><canvas id="chartGeral"></canvas></div>
+    <div style="background:var(--yellow-dim);border:1px solid rgba(200,212,0,0.2);border-radius:12px;padding:14px;margin-top:16px">
+      <div style="font-size:14px;font-weight:700;color:var(--yellow);margin-bottom:6px">🔄 Período de transição de criativos</div>
+      <div style="font-size:13px;color:#ddd;line-height:1.7">Abril foi excepcionalmente forte com duas campanhas simultâneas. Maio voltou ao orçamento padrão com um novo criativo em fase inicial — o comparativo com abril deve levar esse contexto em conta.</div>
     </div>
   </div>
 </div>
 
 <!-- COMPARATIVO -->
 <div class="section">
-  <div class="section-label">Comparativo · fev vs mar · campanha de vendas</div>
+  <div class="section-label">Abril vs Maio</div>
   <div class="comp-visual">
-
     <div class="comp-item">
       <div class="comp-header">
-        <div class="comp-metric-name">💬 Contatos via WhatsApp</div>
-        <div class="comp-delta-badge" style="background:var(--yellow-dim);color:var(--yellow)">−17,5%</div>
+        <div class="comp-metric-name">💬 Contatos recebidos</div>
+        <div class="comp-delta-badge" style="background:var(--yellow-dim);color:var(--yellow)">−46,6%</div>
       </div>
       <div class="comp-bars">
         <div class="comp-bar-row">
-          <div class="comp-bar-month">Fev</div>
+          <div class="comp-bar-month">Abr</div>
           <div class="comp-bar-track"><div class="comp-bar-fill bar-prev" style="width:100%"></div></div>
-          <div class="comp-bar-num" style="color:var(--muted)">120</div>
+          <div class="comp-bar-num" style="color:var(--muted)">193</div>
         </div>
         <div class="comp-bar-row">
-          <div class="comp-bar-month" style="color:var(--yellow)">Mar</div>
-          <div class="comp-bar-track"><div class="comp-bar-fill bar-mar" style="width:82%"></div></div>
-          <div class="comp-bar-num" style="color:var(--yellow)">99</div>
+          <div class="comp-bar-month" style="color:var(--yellow)">Mai</div>
+          <div class="comp-bar-track"><div class="comp-bar-fill bar-cur" style="width:53%"></div></div>
+          <div class="comp-bar-num" style="color:var(--yellow)">103</div>
         </div>
       </div>
     </div>
-
     <div class="comp-item">
       <div class="comp-header">
         <div class="comp-metric-name">💰 Valor investido</div>
-        <div class="comp-delta-badge" style="background:var(--yellow-dim);color:var(--yellow)">+17,3%</div>
+        <div class="comp-delta-badge" style="background:var(--yellow-dim);color:var(--yellow)">−38,9%</div>
       </div>
       <div class="comp-bars">
         <div class="comp-bar-row">
-          <div class="comp-bar-month">Fev</div>
-          <div class="comp-bar-track"><div class="comp-bar-fill bar-prev" style="width:85%"></div></div>
-          <div class="comp-bar-num" style="color:var(--muted)">R$ 813</div>
+          <div class="comp-bar-month">Abr</div>
+          <div class="comp-bar-track"><div class="comp-bar-fill bar-prev" style="width:100%"></div></div>
+          <div class="comp-bar-num" style="color:var(--muted)">R$ 1.477</div>
         </div>
         <div class="comp-bar-row">
-          <div class="comp-bar-month" style="color:var(--yellow)">Mar</div>
-          <div class="comp-bar-track"><div class="comp-bar-fill bar-mar" style="width:100%"></div></div>
-          <div class="comp-bar-num" style="color:var(--yellow)">R$ 953</div>
+          <div class="comp-bar-month" style="color:var(--yellow)">Mai</div>
+          <div class="comp-bar-track"><div class="comp-bar-fill bar-cur" style="width:61%"></div></div>
+          <div class="comp-bar-num" style="color:var(--yellow)">R$ 902</div>
         </div>
       </div>
     </div>
-
     <div class="comp-item">
       <div class="comp-header">
         <div class="comp-metric-name">🎯 Custo por contato</div>
-        <div class="comp-delta-badge" style="background:var(--yellow-dim);color:var(--yellow)">+52,9%</div>
+        <div class="comp-delta-badge" style="background:var(--yellow-dim);color:var(--yellow)">+30,6%</div>
       </div>
       <div class="comp-bars">
         <div class="comp-bar-row">
-          <div class="comp-bar-month">Fev</div>
-          <div class="comp-bar-track"><div class="comp-bar-fill bar-prev" style="width:65%"></div></div>
-          <div class="comp-bar-num" style="color:var(--muted)">R$ 6,30</div>
+          <div class="comp-bar-month">Abr</div>
+          <div class="comp-bar-track"><div class="comp-bar-fill bar-prev" style="width:77%"></div></div>
+          <div class="comp-bar-num" style="color:var(--muted)">R$ 6,71</div>
         </div>
         <div class="comp-bar-row">
-          <div class="comp-bar-month" style="color:var(--yellow)">Mar</div>
-          <div class="comp-bar-track"><div class="comp-bar-fill bar-mar" style="width:100%"></div></div>
-          <div class="comp-bar-num" style="color:var(--yellow)">R$ 9,63</div>
+          <div class="comp-bar-month" style="color:var(--yellow)">Mai</div>
+          <div class="comp-bar-track"><div class="comp-bar-fill bar-cur" style="width:100%"></div></div>
+          <div class="comp-bar-num" style="color:var(--yellow)">R$ 8,76</div>
         </div>
       </div>
     </div>
-
     <div class="comp-item">
       <div class="comp-header">
         <div class="comp-metric-name">👁️ Pessoas alcançadas</div>
-        <div class="comp-delta-badge" style="background:var(--green-dim);color:var(--green)">+18,5% ↑</div>
+        <div class="comp-delta-badge" style="background:var(--yellow-dim);color:var(--yellow)">−70,3%</div>
       </div>
       <div class="comp-bars">
         <div class="comp-bar-row">
-          <div class="comp-bar-month">Fev</div>
-          <div class="comp-bar-track"><div class="comp-bar-fill bar-prev" style="width:84%"></div></div>
-          <div class="comp-bar-num" style="color:var(--muted)">15.614</div>
+          <div class="comp-bar-month">Abr</div>
+          <div class="comp-bar-track"><div class="comp-bar-fill bar-prev" style="width:100%"></div></div>
+          <div class="comp-bar-num" style="color:var(--muted)">33.232</div>
         </div>
         <div class="comp-bar-row">
-          <div class="comp-bar-month" style="color:var(--yellow)">Mar</div>
-          <div class="comp-bar-track"><div class="comp-bar-fill bar-mar" style="width:100%"></div></div>
-          <div class="comp-bar-num" style="color:var(--yellow)">18.512</div>
+          <div class="comp-bar-month" style="color:var(--yellow)">Mai</div>
+          <div class="comp-bar-track"><div class="comp-bar-fill bar-cur" style="width:30%"></div></div>
+          <div class="comp-bar-num" style="color:var(--yellow)">9.862</div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- EVOLUÇÃO DE CONTATOS -->
+<!-- CRIATIVOS -->
+<div class="section">
+  <div class="section-label">Campanhas do mês</div>
+  <div class="criativos-grid">
+    <div class="criativo winner">
+      <div class="criativo-top">
+        <div class="criativo-rank">🏆 Mais contatos</div>
+        <div class="winner-crown">👑</div>
+      </div>
+      <div class="criativo-name">Mês da Prótese</div>
+      <div class="criativo-pills">
+        <div class="criativo-metric">
+          <div class="criativo-metric-label">Contatos</div>
+          <div class="criativo-metric-val">64</div>
+        </div>
+        <div class="criativo-metric">
+          <div class="criativo-metric-label">Por contato</div>
+          <div class="criativo-metric-val">R$ 9,40</div>
+        </div>
+        <div class="criativo-metric">
+          <div class="criativo-metric-label">Alcance</div>
+          <div class="criativo-metric-val">11.076</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;background:rgba(0,0,0,0.12);border-radius:10px;padding:10px 12px;font-size:12px;color:rgba(0,0,0,0.7);line-height:1.5">
+        Nova campanha temática — ainda em fase de aprendizado. Taxa de interação abaixo da média indica que o criativo precisa de ajustes para o próximo mês.
+      </div>
+    </div>
+    <div class="criativo">
+      <div class="criativo-top">
+        <div class="criativo-rank">Campanha anterior · encerrou</div>
+      </div>
+      <div class="criativo-name">Protocolo (encerramento)</div>
+      <div class="criativo-pills">
+        <div class="criativo-metric">
+          <div class="criativo-metric-label">Contatos</div>
+          <div class="criativo-metric-val">32</div>
+        </div>
+        <div class="criativo-metric">
+          <div class="criativo-metric-label">Por contato</div>
+          <div class="criativo-metric-val">R$ 6,90</div>
+        </div>
+        <div class="criativo-metric">
+          <div class="criativo-metric-label">Alcance</div>
+          <div class="criativo-metric-val">9.113</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;background:var(--yellow-dim);border:1px solid rgba(200,212,0,0.2);border-radius:10px;padding:10px 12px;font-size:12px;color:#bbb;line-height:1.5">
+        Rodou apenas parte do mês antes de ser substituída. CPR de R$ 6,90 — ainda eficiente até o encerramento.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EVOLUÇÃO -->
 <div class="section">
   <div class="section-label">Evolução de contatos</div>
   <div class="chart-wrap">
-    <div class="chart-title">Contatos via WhatsApp por mês</div>
-    <div class="chart-canvas">
-      <canvas id="chart"></canvas>
-    </div>
+    <div class="chart-title">Contatos recebidos por mês</div>
+    <div class="chart-canvas"><canvas id="chart"></canvas></div>
   </div>
 </div>
 
 <!-- INSTAGRAM -->
 <div class="section">
   <div class="section-label">Instagram</div>
-
-  <!-- Seguidores hero -->
   <div style="background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:24px;margin-bottom:16px;text-align:center">
     <div style="font-size:12px;color:var(--yellow);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:2px">Total de seguidores</div>
-    <div style="font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1;color:var(--text)">617</div>
+    <div style="font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1;color:var(--text)">689</div>
     <div style="margin-top:12px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
-      <div style="background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:var(--green)">+35 novos ↑</div>
-      <div style="background:rgba(248,113,113,0.15);border:1px solid rgba(248,113,113,0.3);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:var(--red)">−13 saíram</div>
-      <div style="background:var(--yellow-dim);border:1px solid rgba(200,212,0,0.3);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:var(--yellow)">+4,9% vs fev</div>
+      <div style="background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:var(--green)">+32 novos ↑</div>
+      <div style="background:rgba(248,113,113,0.15);border:1px solid rgba(248,113,113,0.3);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:var(--red)">−11 saíram</div>
+      <div style="background:var(--yellow-dim);border:1px solid rgba(200,212,0,0.3);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:var(--yellow)">+3,1% vs abr</div>
     </div>
-    <div style="margin-top:10px;font-size:13px;color:var(--muted)">Líquido: <strong style="color:var(--green)">+22 seguidores</strong> em março</div>
+    <div style="margin-top:10px;font-size:13px;color:var(--muted)">Líquido: <strong style="color:var(--green)">+21 seguidores</strong> em maio</div>
   </div>
 
-  <!-- Visualizações -->
   <div style="background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px">
     <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:16px">Alcance orgânico</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <div style="background:var(--bg);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(200,212,0,0.2)">
         <div style="font-size:12px;color:var(--yellow);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Visualizações</div>
-        <div style="font-size:36px;font-weight:900;color:var(--yellow);letter-spacing:-1px">33.617</div>
-        <div style="font-size:11px;color:#aaa;margin-top:4px">84,7% via anúncios</div>
+        <div style="font-size:36px;font-weight:900;color:var(--yellow);letter-spacing:-1px">24.746</div>
+        <div style="font-size:11px;color:#aaa;margin-top:4px">77,9% via anúncios</div>
       </div>
-      <div style="background:var(--bg);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(74,222,128,0.2)">
-        <div style="font-size:12px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Contas alcançadas</div>
-        <div style="font-size:36px;font-weight:900;color:var(--green);letter-spacing:-1px">14.012</div>
-        <div style="font-size:11px;color:#aaa;margin-top:4px">+39% vs período ant.</div>
+      <div style="background:var(--bg);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(160,160,160,0.15)">
+        <div style="font-size:12px;color:#aaa;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Contas alcançadas</div>
+        <div style="font-size:36px;font-weight:900;color:#aaa;letter-spacing:-1px">9.862</div>
+        <div style="font-size:11px;color:#aaa;margin-top:4px">−70% vs período ant.</div>
       </div>
     </div>
   </div>
 
-  <!-- Tipo de conteúdo -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px">
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:20px">O que mais engajou em maio</div>
+    <div style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:15px;font-weight:700">🎬 Reels</div>
+        <div style="font-size:16px;font-weight:900;color:var(--yellow)">85,7%</div>
+      </div>
+      <div style="height:12px;background:var(--bg);border-radius:6px;overflow:hidden"><div style="height:100%;width:85.7%;background:var(--yellow);border-radius:6px"></div></div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:15px;font-weight:700">📖 Stories</div>
+        <div style="font-size:16px;font-weight:900;color:#ccc">8,4%</div>
+      </div>
+      <div style="height:12px;background:var(--bg);border-radius:6px;overflow:hidden"><div style="height:100%;width:8.4%;background:#555;border-radius:6px"></div></div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:15px;font-weight:700">🖼️ Posts</div>
+        <div style="font-size:16px;font-weight:900;color:#ccc">5,9%</div>
+      </div>
+      <div style="height:12px;background:var(--bg);border-radius:6px;overflow:hidden"><div style="height:100%;width:5.9%;background:#555;border-radius:6px"></div></div>
+    </div>
+  </div>
+
+  <!-- Perfil do público -->
   <div style="background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:20px">
-    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:20px">O que mais engajou em março</div>
-
-    <div style="margin-bottom:16px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div style="font-size:15px;font-weight:700;color:var(--text)">🎬 Reels</div>
-        <div style="font-size:16px;font-weight:900;color:var(--yellow)">60,5%</div>
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:16px">Quem acompanha o perfil</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div style="background:var(--bg);border-radius:12px;padding:14px;text-align:center;border:1px solid var(--border)">
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:600">Mulheres</div>
+        <div style="font-size:32px;font-weight:900;color:var(--yellow)">67,7%</div>
       </div>
-      <div style="height:12px;background:var(--bg);border-radius:6px;overflow:hidden">
-        <div style="height:100%;width:60.5%;background:var(--yellow);border-radius:6px;box-shadow:0 0 10px rgba(200,212,0,0.4)"></div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:16px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div style="font-size:15px;font-weight:700;color:var(--text)">📖 Stories</div>
-        <div style="font-size:16px;font-weight:900;color:#ccc">35,2%</div>
-      </div>
-      <div style="height:12px;background:var(--bg);border-radius:6px;overflow:hidden">
-        <div style="height:100%;width:35.2%;background:#555;border-radius:6px"></div>
+      <div style="background:var(--bg);border-radius:12px;padding:14px;text-align:center;border:1px solid var(--border)">
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:600">Homens</div>
+        <div style="font-size:32px;font-weight:900;color:#aaa">32,3%</div>
       </div>
     </div>
-
-    <div style="margin-bottom:16px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div style="font-size:15px;font-weight:700;color:var(--text)">🖼️ Posts</div>
-        <div style="font-size:16px;font-weight:900;color:#ccc">4,3%</div>
+    <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Faixa etária predominante</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px;color:var(--text)">25–34 anos</span><span style="font-size:13px;font-weight:800;color:var(--yellow)">29,8%</span></div>
+        <div style="height:8px;background:var(--bg);border-radius:4px;overflow:hidden"><div style="height:100%;width:100%;background:var(--yellow);border-radius:4px"></div></div>
       </div>
-      <div style="height:12px;background:var(--bg);border-radius:6px;overflow:hidden">
-        <div style="height:100%;width:4.3%;background:#555;border-radius:6px"></div>
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px;color:#ccc">35–44 anos</span><span style="font-size:13px;font-weight:700;color:#ccc">28,8%</span></div>
+        <div style="height:8px;background:var(--bg);border-radius:4px;overflow:hidden"><div style="height:100%;width:97%;background:#555;border-radius:4px"></div></div>
       </div>
-    </div>
-
-    <!-- Top conteúdos -->
-    <div style="background:rgba(200,212,0,0.08);border:1px solid rgba(200,212,0,0.2);border-radius:12px;padding:14px;margin-top:4px">
-      <div style="font-size:13px;font-weight:700;color:var(--yellow);margin-bottom:10px">🏆 Conteúdos com mais visualizações</div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="font-size:13px;color:#ddd">Reel · 25/mar</div>
-          <div style="font-size:14px;font-weight:800;color:var(--yellow)">20 mil views</div>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="font-size:13px;color:#ddd">Reel · 18/mar</div>
-          <div style="font-size:14px;font-weight:800;color:var(--text)">17 mil views</div>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="font-size:13px;color:#ddd">Mitos e Verdades · 10/fev</div>
-          <div style="font-size:14px;font-weight:800;color:var(--text)">12 mil views</div>
-        </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px;color:#ccc">45–54 anos</span><span style="font-size:13px;font-weight:700;color:#ccc">19,3%</span></div>
+        <div style="height:8px;background:var(--bg);border-radius:4px;overflow:hidden"><div style="height:100%;width:65%;background:#555;border-radius:4px"></div></div>
       </div>
     </div>
   </div>
@@ -1009,41 +432,36 @@
 
 <!-- INSIGHTS -->
 <div class="section">
-  <div class="section-label">O que aconteceu em março</div>
+  <div class="section-label">O que aconteceu em maio</div>
   <div class="insights-grid">
-
     <div class="insight">
-      <div class="insight-icon">💎</div>
+      <div class="insight-icon">🔄</div>
       <div class="insight-content">
-        <div class="insight-title">Parcelamento da Dra. Ana é o criativo mais inteligente</div>
-        <div class="insight-text">R$ 5,04 por contato — quase metade do custo dos outros criativos — com classificação "Acima da Média" pelo próprio Meta. É o único que o algoritmo valida como eficiente. Esse é o caminho a escalar.</div>
+        <div class="insight-title">Queda esperada após abril recorde</div>
+        <div class="insight-text">Abril foi excepcionalmente forte com duas campanhas e orçamento maior. Maio voltou ao padrão com orçamento menor e novo criativo. O comparativo direto não é justo — a base era alta.</div>
       </div>
     </div>
-
     <div class="insight">
       <div class="insight-icon">⚠️</div>
       <div class="insight-content">
-        <div class="insight-title">Frequência 3,31 pede ação imediata</div>
-        <div class="insight-text">O público da campanha de vendas ativa está saturando. Abril precisa de expansão de público ou novos criativos antes que o CPR comece a subir.</div>
+        <div class="insight-title">Mês da Prótese precisa de ajustes</div>
+        <div class="insight-text">Taxa de interação abaixo da média indica que o criativo não está conectando bem com o público. O CPR de R$ 9,40 é aceitável para odontologia, mas há espaço para melhorar com ajustes no criativo.</div>
       </div>
     </div>
-
-    <div class="insight">
-      <div class="insight-icon">🎬</div>
-      <div class="insight-content">
-        <div class="insight-title">Vlog Prótese tem dupla função</div>
-        <div class="insight-text">Na campanha de tráfego, gerou 90 visitas a R$ 0,40 cada — o conteúdo mais eficiente do mês em custo de alcance. Vale testar esse vídeo também como criativo de conversão.</div>
-      </div>
-    </div>
-
     <div class="insight">
       <div class="insight-icon">📈</div>
       <div class="insight-content">
-        <div class="insight-title">Perfil crescendo de forma consistente</div>
-        <div class="insight-text">+22 seguidores líquidos, 14.012 contas alcançadas (+39%) e reels gerando até 20 mil visualizações. A clínica está ganhando autoridade no digital.</div>
+        <div class="insight-title">Seguidores crescendo consistentemente</div>
+        <div class="insight-text">+21 seguidores líquidos em maio — quarto mês seguido de crescimento. O perfil está em 689 e continua construindo base de forma orgânica e constante.</div>
       </div>
     </div>
-
+    <div class="insight">
+      <div class="insight-icon">🎬</div>
+      <div class="insight-content">
+        <div class="insight-title">Reels dominam com 85,7%</div>
+        <div class="insight-text">O maior índice de Reels registrado nessa conta. Os conteúdos em vídeo da clínica estão ganhando tração orgânica — os dois Reels de 1,5 mil views cada mostram o potencial do formato.</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1056,55 +474,41 @@
       <div class="footer-sub">Produtora de Vídeos com Estratégia</div>
     </div>
   </div>
-  <div class="footer-period">
-    Março 2026<br>
-    01/03 — 31/03
-  </div>
+  <div class="footer-period">Maio 2026<br>01/05 — 31/05</div>
 </div>
 
 <script>
-// GRÁFICO EVOLUÇÃO
+const ctxGeral = document.getElementById('chartGeral').getContext('2d');
+new Chart(ctxGeral, {
+  type: 'line',
+  data: {
+    labels: ['Contatos', 'Alcance (×100)', 'Impressões (×100)'],
+    datasets: [
+      { label: 'Abril', data: [193, 332, 1524], borderColor: '#a78bfa', backgroundColor: 'rgba(167,139,250,0.08)', borderWidth: 3, pointBackgroundColor: '#a78bfa', pointRadius: 6, tension: 0.4, fill: true },
+      { label: 'Maio', data: [103, 99, 649], borderColor: '#c8d400', backgroundColor: 'rgba(200,212,0,0.08)', borderWidth: 3, pointBackgroundColor: '#c8d400', pointRadius: 6, tension: 0.4, fill: true }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1e1e1e', titleColor: '#fff', bodyColor: '#f0f0f0', borderColor: '#2a2a2a', borderWidth: 1, callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.raw } } },
+    scales: { x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#666', font: { family: 'Poppins', size: 10, weight: '600' } } }, y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#666', font: { family: 'Poppins', size: 10 } } } }
+  }
+});
+
 const ctx = document.getElementById('chart').getContext('2d');
 new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ['Janeiro', 'Fevereiro', 'Março'],
-    datasets: [{
-      data: [90, 120, 99],
-      backgroundColor: ['#2a2a2a', '#2a2a2a', '#c8d400'],
-      borderRadius: 12,
-      borderSkipped: false,
-    }]
+    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
+    datasets: [{ data: [90, 120, 99, 193, 103], backgroundColor: ['#2a2a2a', '#2a2a2a', '#2a2a2a', '#2a2a2a', '#c8d400'], borderRadius: 12, borderSkipped: false }]
   },
   options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        backgroundColor: '#1e1e1e',
-        titleColor: '#c8d400',
-        bodyColor: '#f0f0f0',
-        borderColor: '#2a2a2a',
-        borderWidth: 1,
-        callbacks: {
-          label: ctx => ' ' + ctx.raw + ' contatos'
-        }
-      }
-    },
-    scales: {
-      x: {
-        grid: { display: false },
-        ticks: { color: '#666', font: { family: 'Poppins', size: 12, weight: '600' } }
-      },
-      y: {
-        grid: { color: 'rgba(255,255,255,0.04)' },
-        ticks: { color: '#666', font: { family: 'Poppins', size: 11 } }
-      }
-    }
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1e1e1e', titleColor: '#c8d400', bodyColor: '#f0f0f0', borderColor: '#2a2a2a', borderWidth: 1, callbacks: { label: ctx => ' ' + ctx.raw + ' contatos' } } },
+    scales: { x: { grid: { display: false }, ticks: { color: '#666', font: { family: 'Poppins', size: 11, weight: '600' } } }, y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#666', font: { family: 'Poppins', size: 11 } } } }
   }
 });
 </script>
-
 </body>
 </html>
